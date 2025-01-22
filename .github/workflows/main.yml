@@ -10,12 +10,20 @@ on:
       - main
   
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        default: 'World'
+        required: true
   
 jobs:
   test-and-release:  # this workflow contains a single job called test and release
     runs-on: ubuntu-latest  # The operating system the job runs on
 
     steps:
+    - name: Send Greeting 
+      run: echo "Hello ${{ github.event.inputs.name }}"
+      
     # Checkout the code
     - name: Checkout code
       uses: actions/checkout@v3
