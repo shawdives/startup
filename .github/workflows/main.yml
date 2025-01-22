@@ -1,0 +1,31 @@
+name: Test
+
+# Trigger this workflow on push or pull request events
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+  workflow_dispatch:
+  
+jobs:
+  test-and-release:  # this workflow contains a single job called test and release
+    runs-on: ubuntu-latest  # The operating system the job runs on
+
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # runs set of commands in runners shell
+    - name: Run a one-line script
+      run: echo Hello, World!
+
+    - name: Run a multi-line script
+      run: |
+        echo Are you hungry?
+        echo Hopefully yes!! :) 
+     
